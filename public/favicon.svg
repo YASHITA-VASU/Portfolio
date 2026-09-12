@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#071018"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" stroke="#3EE0C5" stroke-opacity="0.55"/>
+  <text x="32" y="41" text-anchor="middle" font-family="Syne, Georgia, serif" font-size="22" font-weight="700" fill="#F4F1EA">YV</text>
+</svg>
