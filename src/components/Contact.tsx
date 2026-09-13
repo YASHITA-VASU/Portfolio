@@ -53,22 +53,7 @@ export function Contact() {
                     </span>
                   </a>
                 </li>
-                <li>
-                  <a
-                    href={`tel:${profile.phone}`}
-                    className="group flex items-start gap-4"
-                  >
-                    <Phone className="mt-1 text-signal" size={18} />
-                    <span>
-                      <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-mist">
-                        Phone
-                      </span>
-                      <span className="text-foam group-hover:text-signal">
-                        {profile.phone}
-                      </span>
-                    </span>
-                  </a>
-                </li>
+
                 <li>
                   <a
                     href={profile.linkedin}
@@ -111,7 +96,7 @@ export function Contact() {
                     <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-mist">
                       Location
                     </span>
-                    <span className="text-foam">{profile.address}</span>
+                    <span className="text-foam">{profile.location}</span>
                   </span>
                 </li>
               </ul>

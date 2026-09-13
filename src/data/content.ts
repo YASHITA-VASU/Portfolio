@@ -11,9 +11,7 @@ export const profile = {
   summary:
     "Driven and analytical Computer Science student specializing in Artificial Intelligence and Machine Learning, with strong skills in research, data analysis, and problem-solving. Experienced in conducting in-depth research, interpreting qualitative and quantitative data, and preparing insights-driven reports. Skilled in frontend development and AI projects, with a blend of technical expertise and analytical thinking that supports data-driven decision making.",
   email: "yashitavasu13@gmail.com",
-  phone: "+91-8849615468",
   location: "Mangalore, Karnataka, India",
-  address: "#504 Vishwas Dwarka, Kodialbail, Mangalore, Karnataka, India 575003",
   github: "https://github.com/YashitaVasu",
   linkedin: "https://www.linkedin.com/in/yashita-vasu",
   resumePath: "/Yashita_Resume.pdf",
