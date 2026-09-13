@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone, Send } from "lucide-react"
+import { Mail, MapPin, Send } from "lucide-react"
 import { useState } from "react"
 import type { FormEvent } from "react"
 import { profile } from "../data/content"
