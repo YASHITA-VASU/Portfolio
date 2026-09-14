@@ -1,29 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
-  --color-ink: #071018;
-  --color-ink-soft: #0c1620;
-  --color-panel: #101a26;
-  --color-line: #243140;
-  --color-foam: #f4f1ea;
-  --color-mist: #9aa8b5;
-  --color-signal: #3ee0c5;
-  --color-signal-dim: #1a8f7e;
-  --color-ember: #e3b56a;
-  --color-ember-dim: #8d6a2f;
+  --color-ink: #f6f1e8;
+  --color-ink-soft: #ece4d6;
+  --color-panel: #fffdf9;
+  --color-line: #ddd2c3;
+  --color-foam: #1c1915;
+  --color-mist: #6d675e;
+  --color-signal: #5b4a86;
+  --color-signal-dim: #8a7aad;
+  --color-ember: #b45c3e;
+  --color-ember-dim: #8a4330;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 html,
 body,
 #root {
   min-height: 100%;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -36,7 +43,7 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--color-signal) 35%, transparent);
+  background: color-mix(in srgb, var(--color-signal) 22%, transparent);
   color: var(--color-foam);
 }
 
@@ -47,56 +54,39 @@ body {
 
 .font-display {
   font-family: var(--font-display);
+  font-weight: 400;
 }
 
 .grid-fade {
   background-image:
-    linear-gradient(to right, color-mix(in srgb, var(--color-line) 55%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 55%, transparent) 1px, transparent 1px);
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--color-line) 85%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-line) 85%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 72px 72px;
-  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, black 22%, transparent 74%);
 }
 
 .noise {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
 }
 
-.glass {
-  background: color-mix(in srgb, var(--color-panel) 78%, transparent);
-  backdrop-filter: blur(18px);
-  border: 1px solid color-mix(in srgb, var(--color-line) 85%, white 8%);
+.card-shadow {
+  box-shadow: 0 18px 40px -28px rgba(28, 25, 21, 0.28);
 }
 
-.hover-sheen {
-  position: relative;
-  overflow: hidden;
-}
-
-.hover-sheen::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 20%,
-    color-mix(in srgb, var(--color-signal) 10%, transparent) 46%,
-    transparent 70%
-  );
-  transform: translateX(-120%);
-  transition: transform 0.7s ease;
-  pointer-events: none;
-}
-
-.hover-sheen:hover::after {
-  transform: translateX(120%);
+.card-shadow-hover {
+  box-shadow: 0 28px 50px -24px rgba(91, 74, 134, 0.28);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .hover-sheen::after {
-    display: none;
   }
 }
