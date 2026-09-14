@@ -1,85 +1,73 @@
-import { motion } from "framer-motion"
 import { projects } from "../data/content"
 import { Reveal, SectionHeading } from "./Reveal"
 
-const spanClass = {
-  featured: "lg:col-span-6",
-  wide: "lg:col-span-3",
-  full: "lg:col-span-6",
-} as const
-
 export function Projects() {
   return (
-    <section id="projects" className="scroll-mt-32 bg-ink-soft/55 px-5 py-20 sm:px-8 lg:py-28">
+    <section id="projects" className="scroll-mt-24 px-5 py-20 sm:px-8 lg:py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
             index="04"
             eyebrow="Selected work"
-            title="Projects"
-            description="Workstreams drawn from internships and training — research, usability, consumer insight, and community."
+            title="Featured projects"
+            description="Research-backed systems for detecting synthetic media — image first, then video at real-time pace."
           />
         </Reveal>
 
-        <div className="grid gap-5 lg:grid-cols-6">
+        <div className="grid gap-6 lg:grid-cols-2">
           {projects.map((project, index) => (
-            <Reveal
-              key={project.name}
-              delay={index * 0.06}
-              className={spanClass[project.span]}
-            >
-              <motion.article
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 280, damping: 22 }}
-                className={`flex h-full min-w-0 flex-col rounded-[1.5rem] border border-line bg-panel p-6 card-shadow transition hover:border-signal/30 hover:shadow-[0_28px_50px_-24px_rgba(91,74,134,0.28)] sm:p-8 ${
-                  project.span === "featured"
-                    ? "lg:grid lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:p-10"
-                    : ""
-                }`}
-              >
-                <div className="min-w-0">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-signal">
-                    {String(index + 1).padStart(2, "0")}
-                    <span className="mx-2 text-line">/</span>
-                    {project.context}
+            <Reveal key={project.name} delay={index * 0.08}>
+              <article className="hover-sheen flex h-full flex-col rounded-[2rem] border border-line bg-panel/80 p-6 sm:p-8">
+                <div className="flex items-start justify-between gap-4">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-signal">
+                    {String(index + 1).padStart(2, "0")} · {project.date}
                   </p>
-                  <h3 className="mt-4 font-display text-3xl leading-tight text-foam sm:text-4xl">
-                    {project.name}
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-mist sm:text-base">
-                    {project.description}
+                  <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ember">
+                    {project.team}
                   </p>
                 </div>
+                <h3 className="mt-5 font-display text-3xl text-foam">
+                  {project.name}
+                </h3>
+                <p className="mt-2 text-signal">{project.subtitle}</p>
+                <p className="mt-5 text-sm leading-relaxed text-mist sm:text-base">
+                  {project.description}
+                </p>
 
-                <div className={`min-w-0 ${project.span === "featured" ? "mt-8 lg:mt-0" : "mt-6"}`}>
-                  <ul className="space-y-2 text-sm text-mist">
-                    {project.features.map((feature) => (
-                      <li key={feature} className="flex gap-3">
-                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ember" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="mt-6 rounded-2xl border border-line/80 bg-ink/40 p-4">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ember">
+                    Problem
+                  </p>
+                  <p className="mt-2 text-sm text-foam/85">{project.problem}</p>
+                </div>
 
-                  <p className="mt-6 text-sm leading-relaxed text-foam/85">
-                    <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-ember">
-                      Contribution
+                <ul className="mt-6 space-y-2 text-sm text-mist">
+                  {project.features.map((feature) => (
+                    <li key={feature} className="flex gap-3">
+                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-signal" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="mt-6 text-sm leading-relaxed text-foam/80">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ember">
+                    Contribution
+                  </span>
+                  <span className="mt-2 block">{project.contribution}</span>
+                </p>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full bg-white/4 px-3 py-1 text-xs text-mist"
+                    >
+                      {tech}
                     </span>
-                    <span className="mt-2 block">{project.contribution}</span>
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {project.methods.map((method) => (
-                      <span
-                        key={method}
-                        className="rounded-full bg-ink px-3 py-1 text-xs text-mist"
-                      >
-                        {method}
-                      </span>
-                    ))}
-                  </div>
+                  ))}
                 </div>
-              </motion.article>
+              </article>
             </Reveal>
           ))}
         </div>

@@ -1,36 +1,30 @@
-import { motion } from "framer-motion"
 import { journey } from "../data/content"
 import { Reveal, SectionHeading } from "./Reveal"
 
 export function Journey() {
   return (
-    <section id="journey" className="scroll-mt-32 px-5 py-20 sm:px-8 lg:py-28">
+    <section id="journey" className="scroll-mt-24 px-5 py-20 sm:px-8 lg:py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
             index="07"
             eyebrow="Trajectory"
             title="My journey"
-            description="A compact arc from first industry rooms to the year of graduation."
+            description="From first-year foundations to decision science — a five-year arc of study, product work, and research."
           />
         </Reveal>
 
         <div className="relative">
-          <div className="absolute bottom-6 left-[15px] top-6 hidden w-px bg-gradient-to-b from-signal via-ember/40 to-transparent md:block" />
+          <div className="absolute bottom-4 left-4 top-4 hidden w-px bg-gradient-to-b from-signal via-ember to-transparent md:block" />
           <ol className="space-y-4">
             {journey.map((step, index) => (
-              <Reveal key={step.year} delay={index * 0.06}>
-                <motion.li
-                  whileHover={{ x: 4 }}
-                  className="group grid gap-3 rounded-[1.4rem] border border-line bg-panel p-5 card-shadow transition hover:border-signal/35 md:grid-cols-[7rem_minmax(0,1fr)] md:items-start md:gap-8 md:pl-14"
-                >
+              <Reveal key={step.year} delay={index * 0.05}>
+                <li className="group grid gap-4 rounded-3xl border border-line bg-panel/60 p-5 transition hover:border-signal/40 hover:bg-panel md:grid-cols-[8rem_1fr] md:items-center md:pl-14">
                   <div className="relative">
-                    <span className="absolute top-3 hidden h-3 w-3 rounded-full border border-signal bg-panel group-hover:bg-signal md:left-[-2.7rem] md:block" />
-                    <p className="font-display text-3xl italic text-ember">
-                      {step.year}
-                    </p>
+                    <span className="absolute top-1/2 hidden h-3 w-3 -translate-y-1/2 rounded-full border border-signal bg-ink group-hover:bg-signal md:left-[-2.65rem] md:block" />
+                    <p className="font-display text-3xl text-ember">{step.year}</p>
                   </div>
-                  <div className="min-w-0">
+                  <div>
                     <h3 className="font-display text-xl text-foam sm:text-2xl">
                       {step.title}
                     </h3>
@@ -38,7 +32,7 @@ export function Journey() {
                       {step.detail}
                     </p>
                   </div>
-                </motion.li>
+                </li>
               </Reveal>
             ))}
           </ol>

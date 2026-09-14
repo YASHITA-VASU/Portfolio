@@ -1,47 +1,43 @@
-import { motion } from "framer-motion"
 import { experiences } from "../data/content"
 import { Reveal, SectionHeading } from "./Reveal"
 
 export function Experience() {
   return (
-    <section id="experience" className="scroll-mt-32 px-5 py-20 sm:px-8 lg:py-28">
+    <section id="experience" className="scroll-mt-24 px-5 py-20 sm:px-8 lg:py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
             index="03"
             eyebrow="Practice"
             title="Experience"
-            description="Internships and training across product research, usability, operations, and community."
+            description="Roles where analysis, AI systems, and frontend craft met real product and decision work."
           />
         </Reveal>
 
-        <ol className="relative space-y-5 before:absolute before:bottom-3 before:left-[15px] before:top-3 before:w-px before:bg-gradient-to-b before:from-signal before:via-line before:to-transparent md:before:left-[9.6rem]">
+        <ol className="relative space-y-6 before:absolute before:bottom-0 before:left-4 before:top-2 before:w-px before:bg-line md:before:left-[7.5rem]">
           {experiences.map((item, index) => (
             <Reveal key={`${item.company}-${item.duration}`} delay={index * 0.05}>
-              <li className="grid gap-3 md:grid-cols-[9.5rem_minmax(0,1fr)]">
-                <p className="hidden pt-7 font-mono text-[11px] uppercase leading-relaxed tracking-[0.14em] text-ember md:block">
+              <li className="grid gap-4 md:grid-cols-[7.5rem_1fr]">
+                <p className="hidden pt-6 font-mono text-[11px] uppercase leading-relaxed tracking-[0.16em] text-ember md:block">
                   {item.duration}
                 </p>
-                <motion.article
-                  whileHover={{ y: -4 }}
-                  transition={{ type: "spring", stiffness: 320, damping: 24 }}
-                  className="relative min-w-0 rounded-[1.4rem] border border-line bg-panel p-6 pl-12 card-shadow transition hover:border-signal/35 hover:shadow-[0_24px_44px_-24px_rgba(91,74,134,0.28)] md:pl-8"
-                >
-                  <span className="absolute left-[11px] top-8 h-3 w-3 rounded-full border border-signal bg-panel md:left-[-17px]" />
-                  <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-signal md:hidden">
+                <article className="relative rounded-3xl border border-line bg-panel/75 p-6 pl-12 transition hover:border-signal/35 md:pl-8">
+                  <span className="absolute left-[9px] top-8 h-3 w-3 rounded-full border border-signal bg-ink md:left-[-13px]" />
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-signal md:hidden">
                     {item.duration}
                   </p>
                   <div className="flex flex-wrap items-end justify-between gap-3">
-                    <div className="min-w-0">
-                      <h3 className="font-display text-2xl text-foam sm:text-[1.85rem]">
+                    <div>
+                      <h3 className="font-display text-2xl text-foam">
                         {item.role}
                       </h3>
-                      <p className="mt-1 text-mist">
-                        {item.company}
-                        <span className="text-line"> · </span>
-                        {item.location}
-                      </p>
+                      <p className="mt-1 text-mist">{item.company}</p>
                     </div>
+                    {item.project ? (
+                      <p className="rounded-full border border-ember/30 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-ember">
+                        {item.project}
+                      </p>
+                    ) : null}
                   </div>
 
                   <ul className="mt-5 space-y-2 text-sm leading-relaxed text-mist sm:text-base">
@@ -53,17 +49,24 @@ export function Experience() {
                     ))}
                   </ul>
 
+                  <p className="mt-5 border-t border-line pt-4 text-sm text-foam/80">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ember">
+                      Learning
+                    </span>
+                    <span className="mt-2 block">{item.learnings}</span>
+                  </p>
+
                   <div className="mt-5 flex flex-wrap gap-2">
-                    {item.methods.map((method) => (
+                    {item.technologies.map((tech) => (
                       <span
-                        key={method}
-                        className="rounded-full border border-line bg-ink px-3 py-1 text-xs text-mist"
+                        key={tech}
+                        className="rounded-full border border-line px-3 py-1 text-xs text-mist"
                       >
-                        {method}
+                        {tech}
                       </span>
                     ))}
                   </div>
-                </motion.article>
+                </article>
               </li>
             </Reveal>
           ))}
